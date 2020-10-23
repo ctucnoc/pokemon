@@ -1,9 +1,8 @@
 package com.example.demo.pokemon.api;
 
-import java.util.List;
 
 import com.example.demo.models.DetalleResponse;
-import com.example.demo.models.EvolutionChain;
+import com.example.demo.models.EvolutionChainResponse;
 import com.example.demo.models.PokemonResponse;
 
 import retrofit2.Call;
@@ -19,5 +18,5 @@ public interface APIPokemon {
 	public Call<DetalleResponse> detailByid(@Path("p") Integer p);
 	
 	@GET("evolution-chain/{p}")
-	public Call<List<EvolutionChain>> findByEvolutionChain(@Path("p") Integer p);
+	public Call<EvolutionChainResponse> findByEvolutionChain(@Path("p") Integer p);
 }

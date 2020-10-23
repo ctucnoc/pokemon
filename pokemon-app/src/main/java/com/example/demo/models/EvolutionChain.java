@@ -2,23 +2,24 @@ package com.example.demo.models;
 
 public class EvolutionChain {
 
-	private String speciesName;
-	private String minLevel;
+	private int number;
+	private String url;
 
-	public String getSpeciesName() {
-		return speciesName;
+	public int getNumber() {
+		String[] urlPartes = url.split("/");
+		return Integer.parseInt(urlPartes[urlPartes.length - 1]);
 	}
 
-	public void setSpeciesName(String speciesName) {
-		this.speciesName = speciesName;
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
-	public String getMinLevel() {
-		return minLevel;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setMinLevel(String minLevel) {
-		this.minLevel = minLevel;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

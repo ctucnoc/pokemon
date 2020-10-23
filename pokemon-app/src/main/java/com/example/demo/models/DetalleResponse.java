@@ -4,6 +4,7 @@ public class DetalleResponse {
 	private GenericDate color;
 	private String base_happiness;
 	private String capture_rate;
+	private EvolutionChain evolution_chain;
 	
 	private GenericDate evolves_from_species;
 
@@ -38,6 +39,16 @@ public class DetalleResponse {
 
 	public void setColor(GenericDate color) {
 		this.color = color;
+	}
+
+	public EvolutionChain getEvolution_chain() {
+		return evolution_chain;
+	}
+
+	public void setEvolution_chain(EvolutionChain evolution_chain) {
+		this.evolution_chain = evolution_chain;
 	}	
+	
+	
 
 }
