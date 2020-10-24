@@ -7,6 +7,6 @@
 <title>Pokemón App</title>
 </head>
 <body>
-	<jsp:forward page="/findAll" />
+	<jsp:forward page="/findAll?offset=0&limit=15" />
 </body>
 </html>

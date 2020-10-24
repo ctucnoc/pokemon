@@ -6,6 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
+<script src="${contextPath}/resources/js/jquery.js"></script>
+<script src="${contextPath}/resources/js/jquery-ui.min.js"></script>
+<script src="${contextPath}/resources/js/Grid.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 .item-in-cart {
@@ -67,9 +71,24 @@ hr {
 }
 </style>
 </head>
-<body>
-	<hr style="width: 90%; align-content: center; margin-top: 10px;">
-	<hr style="width: 90%; align-content: center; margin-top: 10px;">
+<body onload="storage();">
+
+	<table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
+		<tbody>
+			<tr style="padding: 5px 5px;">
+				<td class="titleApp">
+					<div
+						style="padding: 5px 5px; background-color: #5e0000; height: 59px; line-height: 74px;">
+						<div
+							style="height: 16px; line-height: 16px; padding: 10px 10px; font-size: 13px;">
+							<h1 style="color: white;">POKE API</h1>
+						</div>
+					</div>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<c:forEach var="results" items="${listPokemon}" varStatus="status">
 		<div class="item-in-cart">
 			<div class="image">
@@ -83,9 +102,61 @@ hr {
 				<small>${results.url}</small>
 			</div>
 			<div class="detail corazon">
-				<a href="${pageContext.request.contextPath}/detail?p=${results.number}">&#x2665;</a>
+				<a
+					href="${pageContext.request.contextPath}/detail?p=${results.number}">&#x2665;
+				</a>
 			</div>
 		</div>
 	</c:forEach>
+	<div>
+		<button>
+			<a href="javascript:previous();" value="${contextPath}" id="enlacee"
+				name="mienlacee"> previus </a>
+		</button>
+		<button>
+			<a href="javascript:next();" value="${contextPath}" id="enlace"
+				name="mienlace"> next </a>
+		</button>
+	</div>
 </body>
+<script type="text/javascript">
+	var limit = 15;
+	function next() {
+		var a=parseInt(getStorage(),10)+1;
+		if (a >= 0) {
+			var newOffset = limit * a
+			var href = $("#enlace").attr('value') + "/findAll?offset="
+					+ newOffset + "&limit=" + limit;
+			//$("#enlace").attr('href',href);
+			cambiarKey(a);
+			window.location = href;
+		}
+	}
+	function previous() {
+		var b=parseInt(getStorage(),10)-1;
+		if (b >= 0) {
+			alert('dentro');
+			var newOffsetp = limit * b;
+			var href = $("#enlacee").attr('value') + "/findAll?offset="
+					+ newOffsetp + "&limit=" + limit;
+			//$("#enlace").attr('href',href);
+			cambiarKey(b);
+			window.location = href;
+		}
+	}
+
+	function cambiarKey(a){
+		sessionStorage.setItem('INF_DEF', a);
+	}
+
+	function storage() {
+		if(sessionStorage.getItem('INF_DEF')==null){
+			sessionStorage.setItem('INF_DEF', 0);
+		}
+	}
+	function getStorage() {
+		return sessionStorage.getItem('INF_DEF');
+	}
+
+</script>
 </html>

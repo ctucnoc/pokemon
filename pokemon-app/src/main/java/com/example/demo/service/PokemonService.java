@@ -7,7 +7,7 @@ import com.example.demo.models.PokemonResponse;
 
 public interface PokemonService {
 	
-	public PokemonResponse findAll();
+	public PokemonResponse findAll(int offset,int limit);
 	
 	public DetalleResponse detailById(Integer p);
 	
